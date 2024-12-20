@@ -3,14 +3,14 @@ import Contact from '../components/Contact.jsx'
 import Footer from '../components/Footer.jsx'
 
 function ContactPage() {
-  return (
-    <div>
-      
-      <Contact />
-      <Footer />
+    return (
+        <div>
+            
+            <Contact />
+            <Footer />
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default ContactPage

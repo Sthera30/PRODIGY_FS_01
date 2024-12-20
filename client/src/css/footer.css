@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    padding: 1.5rem 5%;
+    background: hsl(120, 64%, 87%);
 }
 
 .footer-box img{
@@ -17,7 +19,7 @@
 .footer-box{
     display: flex;
     flex-direction: column;
-    flex: 1 1 15rem;
+    flex: 1 1 25rem;
 }
 
 .footer-box h3{

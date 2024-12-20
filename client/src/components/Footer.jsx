@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import imgLogo from '../assets/logo.png'
 import '../css/footer.css'
 import { NavLink } from 'react-router-dom'
-import { FaPizzaSlice, FaWhatsapp, FaTiktok, FaInstagram } from 'react-icons/fa'
+import { FaUtensils, FaWhatsapp, FaTiktok, FaInstagram } from 'react-icons/fa'
 
 
 function Footer() {
@@ -18,17 +18,17 @@ function Footer() {
 
         <div className='footer-co'>
 
-            <div className='footer-container sec' style={{ background: ' hsl(350, 52%, 91%)' }}>
+            <div className='footer-container'>
 
                 <div className='footer-box'>
 
                     <NavLink style={{ textDecoration: 'none' }} to={"/"}>
 
-                        <FaPizzaSlice style={{ color: 'orange', fontSize: '1.7rem' }} />
+                        <FaUtensils style={{ color: 'green', fontSize: '1.7rem' }} />
 
                     </NavLink>
 
-                    <span style={{ fontStyle: 'italic', color: '#333', fontSize: '1.5rem' }}>Taste Hub</span>
+                    <span style={{ fontStyle: 'italic', color: '#333', fontSize: '1.5rem' }}>Food Eats</span>
 
                 </div>
 
@@ -53,9 +53,9 @@ function Footer() {
                 <div className='footer-box'>
 
                     <h3 style={{ fontSize: '1.3rem' }}>LEGAL</h3>
-                    <NavLink style={{ textDecoration: 'none' }} to={"/conditions"}>Terms of use</NavLink>
-                    <NavLink style={{ textDecoration: 'none' }} to={"/conditions"}>Privacy policy</NavLink>
-                    <NavLink style={{ textDecoration: 'none' }} to={"/policy"}>
+                    <NavLink style={{ textDecoration: 'none' }} >Terms of use</NavLink>
+                    <NavLink style={{ textDecoration: 'none' }} >Privacy policy</NavLink>
+                    <NavLink style={{ textDecoration: 'none' }} >
                         Cookie policy
                     </NavLink>
 
@@ -68,7 +68,7 @@ function Footer() {
                 <div className='footer-left'>
 
                     <span style={{ fontSize: '1.2rem' }}>
-                        &copy;Copyright By Taste Hub 2024
+                        &copy;Copyright By Food Eats 2024
                     </span>
 
                 </div>

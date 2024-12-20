@@ -1,61 +1,53 @@
 .about-container{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    padding: 2rem 6%;
 }
 
-.about-left{
+.about-container h3{
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 2rem;
+}
+
+.about-container-inner{
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.about-container-inner .about-left{
     flex: 1 1 25rem;
 }
 
 .about-left img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 
-.about-right{
+.about-container-inner .about-right{
     flex: 1 1 25rem;
-    max-width: 30rem;
 }
 
-.about-right h1{
-    color: hsl(0, 1%, 44%);
+.about-container-inner .about-right h4{
+    font-size: 1.5rem;
 }
 
-.about-right span{
-    color: hsl(39, 97%, 29%);
-    font-size: 2.2rem;
+.about-container-inner .about-right h5{
+    font-size: 1.3rem;
 }
 
-.about{
-    color: #fff !important;
-    background: hsl(197, 92%, 45%);
-    padding: .6rem 1rem;
-    border-radius: 3rem;
-}
-
-.more{
-    color:red !important;
-}
-
-.multiple{
-    color: hsl(43, 90%, 52%) !important;
-}
-
-.about-right p{
+.about-container-inner .about-right p{
+    font-size: 1.2rem;
     line-height: 1.5;
 }
 
-.btnAbout{
+.btnAboutUs{
+    padding: 1rem 1.8rem;
     color: #fff;
-    background: hsl(39, 94%, 43%) !important;
-    padding: .8rem 1.5rem;
+    background: hsl(120, 95%, 37%);
     border-radius: 3rem;
     cursor: pointer;
 }
 
-.btnAbout:hover{
-    background: orange !important;
+.btnAboutUs:hover{
+    background: green;
 }

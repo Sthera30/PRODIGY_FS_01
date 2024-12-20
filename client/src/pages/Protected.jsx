@@ -1,69 +1,64 @@
-import { useUserContext } from "../context/userContext.jsx";
+import React, { useEffect, useState } from 'react'
+import { useUserContext } from '../context/userContext.jsx'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useEffect } from "react";
+import toast from 'react-hot-toast'
 
 function Protected({ children }) {
 
-
     const { user, setUser } = useUserContext()
+    const [isLoading, setIsLoading] = useState(true)
+
     const navigate = useNavigate()
 
-    const getUser = async () => {
+    async function handle_get_user_info() {
 
         try {
 
-            const res = await axios.post("https://mern-food-ordering-app-10.onrender.com/getUser", {
-                token: localStorage.getItem("token")
-            },
-
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
-                    }
-                }
-
-            )
+            const res = await axios.get(`http://localhost:8080/getUser`, { withCredentials: true }) //send cookies
 
             if (res.data.success) {
-                setUser(res.data.data)
-                
+                setUser(res.data.data.user)
+                console.log('Hello');
+
             }
 
             else {
-                localStorage.clear()
-                return navigate("/login")
+                setUser(null)
             }
 
-
-
         } catch (error) {
+            setUser(null)
             console.log(error);
-            localStorage.clear()
-
+        } finally {
+            setIsLoading(false)
         }
 
     }
 
     useEffect(() => {
 
-        if (!user) {
-            getUser()
-        }
+        handle_get_user_info()
 
-    }, [user])
+    }, [])
 
 
-    if (localStorage.getItem("token")) {
-        return children
+    if (isLoading) {
+        return <div>Loading...</div>
     }
 
-    else {
-        localStorage.clear()
-        return navigate("/login")
+    if(!user){
+        navigate("/login", {replace: true})
+        return null
     }
 
+    return (
+        <div>
 
+            {children}
+
+        </div>
+    )
 }
 
 export default Protected

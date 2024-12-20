@@ -1,181 +1,109 @@
-import React, { useEffect, useState } from 'react'
-import ImgLogo from '../assets/logo.png'
+import React, { useState } from 'react'
+import { FaUtensils, FaBars } from 'react-icons/fa'
 import '../css/navbar.css'
-import BarsIcon from './BarsIcon.jsx'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import imgProfile from '../assets/avator.png'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useUserContext } from '../context/userContext.jsx'
-import { FaCartPlus, FaPizzaSlice } from 'react-icons/fa'
-import { useCartContext } from '../context/cartContext.jsx'
-import { XIcon } from 'lucide-react'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+
+
 
 function Navbar() {
 
-    const [showNav, setShowNav] = useState(true)
-    const [showProfile, setShowProfile] = useState(false)
-    const [showCart, setShowCart] = useState(false)
-    const { user, setUser } = useUserContext()
-    const [active, setActive] = useState("Home")
 
     const navigate = useNavigate()
 
-    const { cartItems } = useCartContext()
+    const { user, setUser } = useUserContext()
 
-    const [bounce, setBounce] = useState(false);
-    const text = "Taste Hub";
+    const [isClicked, setIsClicked] = useState(false)
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setBounce(prev => !prev);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
+    async function handle_logout() {
 
+        try {
 
+            const { data } = await axios.post('http://localhost:8080/logout', {}, { withCredentials: true })
+
+            if (data.success) {
+                setUser(null)
+                toast.success(data.message)
+                navigate("/login", { replace: true })
+            }
+
+            else {
+                toast.error(data.error)
+                navigate('/login', { replace: true })
+
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     return (
 
         <>
+
             <div className='header'>
 
-                <div className='left-bar'>
+                <div className='food-icon-container'>
 
-                    <NavLink to={"/"}>
+                    <div className='left-container'>
 
-                        <FaPizzaSlice style={{ color: 'orange', fontSize: '1.7rem' }} />
+                        <NavLink to={"/"}>
 
-                    </NavLink>
-                    {text.replace(/\s/g, '').split('').map((char, i) => (
-                        <span
-                            key={i}
-                            className="bounce"
-                            style={{ animationDelay: `${i * 0.1}s`, display: "inline-block" }}
-                        >
-                            {char}
-                        </span>
-                    ))}
+                            <FaUtensils style={{ color: '#fff', cursor: 'pointer', fontSize: '1.4rem' }} />
 
+                        </NavLink>
 
+                    </div>
 
-                </div>
+                    <div className='right-container'>
 
-
-                <div className={`right-bar default ${showNav ? "hide" : "show"}`}>
-
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Home'? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={""}>Home</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === 'Our Promise'? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-promise"}>Our Promise</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Service"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-services"}>Our Service</NavLink>
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our Food"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/our-food"}>Our Food</NavLink>
-
-                    {user?.user?.role === "admin" ? <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Our food"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/add-food"}>Add food</NavLink> : ""}
-
-                    <NavLink onClick={(e) => setActive(e.target.textContent)} className={`navbar-tags ${active === "Contact"? "activeBackground" : ""}`} style={{ textDecoration: 'none' }} to={"/contact"}>Contact</NavLink>
-
-
-                </div>
-
-
-                <div className='right_'>
-
-                    <div className='cart'>
-
-                        <a onClick={() => setShowCart(prevCart => !prevCart)}>
-
-                            <FaCartPlus style={{ fontSize: '1.5rem' }} />
-
-                        </a>
-
-                        <div className={`${user?.user?.role == "admin"? "count-cart": user?.user?.role === "user"? "count-cart" : "cart_position"}`}>
-
-                            <span>{cartItems.length}</span>
-
-                        </div>
-
-
-                        <div className={`cart-box ${showCart ? "showCart" : "hideCart"}`}>
-
-                            <span>{cartItems.length} items</span>
-
-                            <NavLink style={{ textDecoration: 'none' }} to={"/view-cart"}>
-
-                                <button style={{ width: '10rem' }} className='btnViewCart'>View cart</button>
-
-                            </NavLink>
-
-                        </div>
-
+                        <span style={{ fontSize: '1.2rem', color: '#fff' }}>Food Eats</span>
 
                     </div>
 
 
+                </div>
+
+                <div className={`nav ${isClicked? ("show") : ("hide")}`}>
+
+                    <NavLink to={""} >Home</NavLink>
+                    <NavLink to={"/about"}>About</NavLink>
+                    <NavLink to={"/our-food"} >Our Food</NavLink>
+                    <NavLink to={"/contact"} >Contact</NavLink>
+
+                </div>
+
+                <div className='login-containe'>
+
                     {user ? (
-                        <a href="#" className='profile'>
-
-                            <img src={user?.user?.profileImage || imgProfile} style={{ width: '2rem', height: '2rem', objectFit: 'cover', borderRadius: '50%', marginLeft: '.8rem' }} alt="" onClick={() => setShowProfile(prev => !prev)} />
-
-                            <div className={`profile_container showProfile ${showProfile ? "showProfile" : "hideProfile"}`}>
-
-                                <div className='new'>
-
-                                    <NavLink style={{ textDecoration: 'none' }} to={'/profile'}>Profile</NavLink>
-                                    <span className='new'>new</span>
-
-                                </div>
-
-                                <NavLink style={{ textDecoration: 'none' }} to={"/my-order"}>My Order</NavLink>
-                                {user?.user?.role === "admin" ?
-
-                                    <NavLink style={{ textDecoration: 'none' }} to={"/my-orders"}>All Orders</NavLink> : ""
-
-                                }
-
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-promise"}>Manage Our Promise</NavLink>) : ""}
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-our-services"}>Manage Our Services</NavLink>) : ""}
-                                {user?.user?.role === "admin" ? (<NavLink style={{ textDecoration: 'none' }} to={"/manage-about-us"}>Manage About Us</NavLink>) : ""}
-
-                                <NavLink style={{ textDecoration: 'none' }}>Settings</NavLink>
-                                <a onClick={() => {
-                                    localStorage.clear()
-                                    navigate("/login")
-                                    location.reload()
-
-                                }}>Logout</a>
-
-                            </div>
-
-                        </a>
+                        <button onClick={handle_logout} className='btnLogin'>Logout</button>
                     ) : (
 
-                        <NavLink style={{ textDecoration: 'none' }} to={"/login"} className='btnLogin'>Login</NavLink>
+                        <NavLink to={"/login"} className='btnLogin'>Login</NavLink>
+
 
                     )}
 
-                </div>
+                    <div className='bars-icon'>
 
-                <div className='right-co'>
+                        <a><FaBars onClick={() => setIsClicked(prev => !prev)} className='bars' style={{ cursor: 'pointer' }} /></a>
 
-                    <div className='right'>
-
-                        {showNav ? (
-                            <i className='bars' onClick={() => setShowNav(prev => !prev)}><BarsIcon /></i>
-
-                        ) : (
-                            <i className='bars' onClick={() => setShowNav(prev => !prev)}><XIcon /></i>
-
-                        )}
                     </div>
 
 
                 </div>
 
-            </div>
+
+            </div >
 
 
         </>
+
     )
 }
 
 export default Navbar
-
-
-//admin must filter orders

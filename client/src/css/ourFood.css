@@ -1,0 +1,56 @@
+.our-food-berner-inner {
+    background: linear-gradient(90deg, hsl(120, 73%, 77%), #fff);
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.our-food-berner-inner span {
+    font-size: 2.7rem;
+    font-weight: 300;
+}
+
+.box-containe {
+    display: flex;
+    gap: 2rem;
+    margin: 6rem 0rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 5%;
+}
+
+.box-con {
+    flex: 1 1 25rem;
+    height: 15rem;
+    margin-bottom: 10rem;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.box-con p{
+    line-height: 1.5;
+}
+
+.box-con .price {
+    position: absolute;
+    top: 1.8rem;
+    right: 1rem;
+}
+
+.box-con .price span {
+    color: #fff;
+    background: green;
+    padding: .8rem;
+    border-radius: 50%;
+}
+
+.box-con img {
+    width: 100%;
+    height: 100%;
+}
+
+.box-con h6{
+    font-size: 1.4rem;
+    margin: 1rem 0rem;
+}

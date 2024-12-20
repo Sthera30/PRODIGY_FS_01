@@ -1,103 +1,58 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { FaMailBulk, FaPhone, FaMailchimp } from 'react-icons/fa'
 import '../css/contact.css'
-import { FaEnvelope, FaEnvelopeOpen, FaPhone } from 'react-icons/fa'
-import { toast } from 'react-hot-toast'
 
 function Contact() {
+  return (
+    <>
 
-    const [result, setResult] = useState("");
+      <div className='contact-contaner'>
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        setResult("Sending....");
+<h2>GET IN TOUCH</h2>
 
-        const formData = new FormData(event.target);
-
-        formData.append("access_key", "b864ad24-f1e9-4470-9ac5-068b25b9749f");
-
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData,
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            toast.success("Email sent!")
-            event.target.reset();
-        } else {
-            console.log("Error", data);
-            setResult(data.message);
-        }
-    };
-
-    useEffect(() => {
-
-        window.scrollTo(0, 0)
-
-    }, [])
+        <div className='contact-inner'>
 
 
-    return (
+          <div className='contact-lef'>
 
-        <>
+            <span>Send us a message <FaMailBulk style={{ color: 'orange' }} /> </span>
+            <p>Feel free to reach out through contact form or find our contact below.</p>
 
-            <div className='Our-Promise-Banner'>
+            <div className='info-container'>
 
-                <h2>GET IN TOUCH</h2>
+              <p className='contact-left'><FaPhone style={{color: 'green'}} /> &nbsp;&nbsp;(+27) 62 419 2299</p>
+              <p className='contact-left'><FaMailchimp style={{color: 'green'}} /> &nbsp;&nbsp;support@foodeats.com</p>
 
             </div>
 
-            <div className='contact-container sec'>
+          </div>
+
+          <div className='contact-right'>
+
+            <form>
 
 
-                <div className='contact-left'>
-
-                    <span>Send us a message <FaEnvelopeOpen style={{ color: 'orange' }} />  </span>
-                    <p>Feel free to leave us a meesage. We will contact you within 3 business day.</p>
-                    <p><FaPhone style={{ color: 'orange' }} /> &nbsp; (+27) 62 419 2299</p>
-                    <p><FaEnvelope style={{ color: 'orange' }} /> &nbsp; tinisthera@gmail.com</p>
-
-                    <div className='working-h'>
-
-                        <h1 style={{marginBottom:'1rem'}}>Working Hours</h1>
-                        <p>Mon-Fri:&nbsp;<p> Open 24 hours</p></p>
-                        <p>Sat-Sun:&nbsp; <p>Open 24 hours</p></p>
-                        <p>Public Holiday: &nbsp; <p>Open 24 hours</p></p>
-
-                    </div>
-
-                </div>
+              <label>Enter your name</label>
+              <input type="text" name='name' placeholder='Enter your name' />
 
 
-                <div className='contact-right'>
-
-                    <form onSubmit={async (event) => onSubmit(event)}>
-
-                        <div className='form-con'>
-
-                            <span>Enter your name</span>
-                            <input type="text" name='name' placeholder='Enter your name' required />
-
-                            <span>Enter your email</span>
-                            <input type="email" name='email' placeholder='Enter your email' required />
-
-                            <span>Write your messages here</span>
-                            <textarea name="message" id="" rows={10} cols={10} placeholder='Enter your message'></textarea>
-
-                        </div>
-
-                        <button type='submit'>Send message</button>
-
-                    </form>
-
-                </div>
-
-            </div >
-        </>
+              <label>Enter your email</label>
+              <input type="email" name='email' placeholder='Enter your email' />
 
 
-    )
+              <label>Write your messages here</label>
+              <textarea name="" id="" cols={10} rows={10} placeholder='Enter your message'></textarea>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </>
+  )
 }
 
 export default Contact

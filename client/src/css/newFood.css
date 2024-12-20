@@ -1,42 +1,91 @@
-.NewFood-box-container {
+.box-container{
+    margin-top: 8rem;
+    text-align: center;
+    padding: 2rem 8%;
+}
+
+.box-container h3{
+    font-size: 2.2rem;
+}
+
+.spoon{
+    color: green;
+    font-size: 1.5rem;
+}
+
+.box-container .box-container-inner{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-.NewFood-box{
-    flex: 1 1 18rem;
-    height: 35rem;
-    margin-bottom: 8rem;
-    border: .1rem solid hsl(0, 2%, 69%);
-    border-radius: .5rem;
-    padding: 1.5rem;
+.box-container-inner .box{
+    flex: 1 1 20rem;
+    height: 15rem;
     position: relative;
-    margin-top: -3rem;
-    background: hsl(351, 47%, 84%) !important;
-
+    margin-bottom: 8rem;
 }
 
-.NewFood-box-container .NewFood-box img {
+.box-container-inner .box .price{
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+}
+
+
+.box-container-inner .box .price span{
+    color: #fff;
+    background: green;
+    padding: .8rem;
+    font-size: 1.3rem;
+    border-radius: 50%;
+}
+
+.box-container-inner .box h6{
+    font-size: 1.5rem;
+    margin: -.2rem 0rem;
+}
+
+.box-container-inner .box img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    margin-bottom: 1.2rem !important;
+    cursor: pointer;
 }
 
-.NewFood-box .content{
-    margin-top: -7rem !important;
+.burner{
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: linear-gradient(180deg, hsl(120, 79%, 81%), #fff);
+    flex-wrap: wrap;
+
 }
 
-
-.flavors{
-    color: hsl(39, 95%, 31%);
+.burner .burner-right img{
+    width: 100%;
+    height: 100%;
 }
 
-.latest{
+.burner-inner p{
+    line-height: 1.5;
+}
+
+.burner-inner h4{
     color: #333;
+    font-size: 2rem;
 }
 
-.btnOrder{
-    background: hsl(197, 79%, 47%);
+.burner-inner p{
+    color: #333f;
+    font-size: 1.2rem;
+}
+
+.burner-inner{
+    flex: 1 1 28rem;
+}
+
+.burner-right{
+    flex: 1 1 28rem;
 }
