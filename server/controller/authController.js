@@ -4,7 +4,7 @@ import genOTP from 'otp-generator'
 import dotenv from 'dotenv'
 import { userModel } from '../model/user.js'
 import { hashPassword, hasConfrimPassword, hashOtp, compareOtp, comparePassword } from '../security/security.js'
-import { otpModel } from '../model/otp.js'
+import { otpModel } from '../model/Otps.js'
 dotenv.config()
 
 
