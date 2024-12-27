@@ -4,6 +4,8 @@ import cors from 'cors'
 import cookieParser from "cookie-parser";
 import { authUser, change_password, create_otp, loginUser, logout, register, verifyEmail, verifyOtp } from "./controller/authController.js";
 import {protect} from './middleware/authentication_middleware.js'
+import dotenv from 'dotenv'
+dotenv.config()
 
 //import { protect } from './middleware/auth_middleware.js'
 
@@ -33,15 +35,15 @@ app.use(cors({
 
 app.post('/register', register)
 app.get("/getUser", protect, authUser)
-app.post("/verifyOtp", verifyOtp)
-app.post("/changePassword", change_password)
+app.put("/verifyOtp", verifyOtp)
+app.put("/changePassword", change_password)
 app.post("/verifyEmail", verifyEmail)
 app.post('/createOtp', create_otp)
 app.post("/login", loginUser)
 app.post('/logout', logout)
 
 
-mongoose.connect('mongodb://localhost:27017/userAuthDB').then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
 
     console.log("connected to the database...");
 

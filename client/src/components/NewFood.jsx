@@ -7,8 +7,7 @@ import img4 from '../assets/flat-lay-delicious-food-assortment.png'
 import img5 from '../assets/side-view-chicken-doner-with-greens-cucumber-tomato-sauce-cucumber-red-onion-pita-slice-lemon-board.png'
 import img6 from '../assets/hand-spoon-with-delicious-fried-churros.png'
 import img7 from '../assets/bbq-ribs-meat-steak.png'
-
-import '../css/NewFood.css'
+import '../css/newFood.css'
 
 function NewFood() {
     return (

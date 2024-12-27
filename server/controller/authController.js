@@ -143,7 +143,7 @@ export const create_otp = async (req, res) => {
             auth: {
 
                 user: 'tinisthera@gmail.com',
-                pass: 'evhrsmudgmuasuxk'
+                pass: 'ciujhxhgrkwhbxml'
 
             }
 
@@ -252,7 +252,7 @@ export const verifyEmail = async (req, res) => {
             service: 'Gmail',
             auth: {
                 user: 'tinisthera@gmail.com',
-                pass: 'evhrsmudgmuasuxk'
+                pass: 'ciujhxhgrkwhbxml'
             }
         })
 
@@ -263,16 +263,7 @@ export const verifyEmail = async (req, res) => {
             text: `${otpGen} is your verification code`
         }
 
-        transporter.sendMail(mailOptions, (err, info) => {
-
-            if (err) {
-                return res.status(200).json({ error: 'Failed sending an email...', success: false })
-            }
-
-            return res.status(200).json({ message: 'OTP sent successfully!', success: true })
-
-        })
-
+        transporter.sendMail(mailOptions)
 
         const user_email = await userModel.findOne({ email })
 

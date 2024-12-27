@@ -23,6 +23,7 @@ function VerifyEmail() {
             if(data.success){
                 navigate("/verify-otp")
                 toast.success(data.message)
+                localStorage.setItem("email", email)
                 setData({email: ''})
             }
 
@@ -48,7 +49,7 @@ function VerifyEmail() {
 
                     <input type='email' placeholder='Enter your email' name='email' onChange={(e) => setData({...data, email: e.target.value})} />
 
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Verify Account</button>
 
                 </form>
 

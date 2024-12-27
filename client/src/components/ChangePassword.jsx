@@ -22,11 +22,12 @@ function ChangePassword() {
 
         try {
 
-            const { data } = await axios.post(`http://localhost:8080/changePassword`, { currentPassword, newPassword, email })
+            const { data } = await axios.put(`http://localhost:8080/changePassword`, { currentPassword, newPassword, email })
 
             if (data.success) {
                 toast.success(data.message)
                 setData({ currentPassword: '', newPassword: '' })
+                localStorage.clear()
                 navigate("/login")
             }
 

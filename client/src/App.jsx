@@ -11,6 +11,7 @@ import Protected from './pages/Protected.jsx'
 import OtpPage from './pages/OtpPage.jsx'
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx'
 import ChangePasswordPage from './pages/ChangePasswordPage.jsx'
+import AboutUsPages from './pages/AboutUsPages.jsx'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
       <Route path={"/"} element={<Layouts />}>
 
         <Route index element={<Protected><HomePage /></Protected>} />
-        <Route path={"/about"} element={<Protected><AboutPage /></Protected>} />
+        <Route path={"/about"} element={<Protected><AboutUsPages /></Protected>} />
         <Route path={"/our-food"} element={<Protected><OurFoodPage /></Protected> } />
         <Route path={"/contact"} element={<ContactPage />} />
         <Route path={"/login"} element={<LoginPage />} />
