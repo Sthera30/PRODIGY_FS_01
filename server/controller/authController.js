@@ -59,7 +59,8 @@ export const register = async (req, res) => {
 
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: process.env.NODE_ENV === 'production' ? "None" : 'Lax'
             })
 
 
@@ -89,10 +90,10 @@ export const authUser = async (req, res) => {
 
     try {
 
-      /*  const email = 'tinisthera@gmail.com'
-
-        console.log(email);
-        */
+        /*  const email = 'tinisthera@gmail.com'
+  
+          console.log(email);
+          */
 
         const user = await userModel.findOne({ email: req.user.email })
 
@@ -358,7 +359,7 @@ export const loginUser = async (req, res) => {
 
         const user = await userModel.findOne({ email: email })
 
-        
+
 
         if (!user) {
             return res.status(200).json({ error: 'invalid login details!', success: false })
@@ -374,8 +375,8 @@ export const loginUser = async (req, res) => {
         res.cookie('token', token, {
 
             httpOnly: true,
-            secure: true
-
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? "None" : 'Lax'
         })
 
         //compare passwords
@@ -409,16 +410,17 @@ export const logout = async (req, res) => {
         res.clearCookie('token', {
 
             httpOnly: true,
-            secure: true
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? "None" : 'Lax'
         })
 
-        return res.status(200).json({message: 'Logged out successfully!', success:true})
-        
+        return res.status(200).json({ message: 'Logged out successfully!', success: true })
+
     } catch (error) {
         console.log(error);
-        return res.status(500).json({error: 'Logout error!'})
-        
-        
+        return res.status(500).json({ error: 'Logout error!' })
+
+
     }
 
 
