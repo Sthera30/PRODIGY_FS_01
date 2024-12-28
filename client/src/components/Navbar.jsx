@@ -21,7 +21,7 @@ function Navbar() {
 
         try {
 
-            const { data } = await axios.post('http://localhost:8080/logout', {}, { withCredentials: true })
+            const { data } = await axios.post('https://prodigy-fs-01-backend-secure-user-auth.onrender.com/logout', {}, { withCredentials: true })
 
             if (data.success) {
                 setUser(null)

@@ -22,7 +22,7 @@ function ChangePassword() {
 
         try {
 
-            const { data } = await axios.put(`http://localhost:8080/changePassword`, { currentPassword, newPassword, email })
+            const { data } = await axios.put(`https://prodigy-fs-01-backend-secure-user-auth.onrender.com/changePassword`, { currentPassword, newPassword, email })
 
             if (data.success) {
                 toast.success(data.message)

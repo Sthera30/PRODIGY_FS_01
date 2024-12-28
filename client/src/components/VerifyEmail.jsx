@@ -18,7 +18,7 @@ function VerifyEmail() {
 
         try {
 
-            const {data} = await axios.post(`http://localhost:8080/verifyEmail`, {email})
+            const {data} = await axios.post(`https://prodigy-fs-01-backend-secure-user-auth.onrender.com/verifyEmail`, {email})
 
             if(data.success){
                 navigate("/verify-otp")

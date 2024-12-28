@@ -20,7 +20,7 @@ function Register() {
 
         try {
 
-            const { data } = await axios.post(`http://localhost:8080/register`, { name, email, password, confirmPassword }, {withCredentials: true})
+            const { data } = await axios.post(`https://prodigy-fs-01-backend-secure-user-auth.onrender.com/register`, { name, email, password, confirmPassword }, {withCredentials: true})
 
             if (data.success) {
                 toast.success(data.message)
