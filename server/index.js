@@ -57,6 +57,10 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log('Failed to connect to the database!', err);
 })
 
+app.get("/", (req, res) => {
+    res.json("Hello")
+})
+
 
 /*//handles file uploads, documents etc
 app.post("/upload", ExpressFormidable({ maxFieldsSize: 5 * 2024 * 2024 }), uploadImage)
