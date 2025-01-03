@@ -23,10 +23,8 @@ app.use(cookieParser())
 
 //cors
 app.use(cors({
-
-    origin: 'https://prodigy-fs-01-frontendd-secure-user-auth.onrender.com',
+    origin: 'https://prodigy-fs-01-frontend.vercel.app',
     credentials: true
-
 }))
 
 

@@ -15,7 +15,7 @@ function Protected({ children }) {
 
         try {
 
-            const res = await axios.get(`https://prodigy-fs-01-backend-secure-user-auth.onrender.com/getUser`, { withCredentials: true }) //send cookies
+            const res = await axios.get(`https://prodigy-fs-01-server.vercel.app/getUser`, { withCredentials: true }) //send cookies
 
             if (res.data.success) {
                 setUser(res.data.data.user)
