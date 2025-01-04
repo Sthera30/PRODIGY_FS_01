@@ -41,13 +41,16 @@ app.post("/login", loginUser)
 app.post('/logout', logout)
 
 
+const PORT = process.env.PORT || 8080
+
+
 mongoose.connect(process.env.MONGO_URL).then(() => {
 
     console.log("connected to the database...");
 
-    app.listen(8080, () => {
+    app.listen(PORT, () => {
 
-        console.log('server is listening at port 8080....');
+        console.log(`server is listening at port ${PORT}....`);
     })
 
 }).catch((err) => {
