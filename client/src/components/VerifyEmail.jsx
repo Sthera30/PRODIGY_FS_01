@@ -18,7 +18,7 @@ function VerifyEmail() {
 
         try {
 
-            const {data} = await axios.post(`https://prodigy-fs-01-server.vercel.app/verifyEmail`, {email})
+            const {data} = await axios.post(`https://prodigy-fs-01-api.vercel.app/verifyEmail`, {email})
 
             if(data.success){
                 navigate("/verify-otp")

@@ -22,7 +22,7 @@ function ChangePassword() {
 
         try {
 
-            const { data } = await axios.put(`https://prodigy-fs-01-server.vercel.app/changePassword`, { currentPassword, newPassword, email })
+            const { data } = await axios.put(`https://prodigy-fs-01-api.vercel.app/changePassword`, { currentPassword, newPassword, email })
 
             if (data.success) {
                 toast.success(data.message)

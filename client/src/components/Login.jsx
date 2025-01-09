@@ -21,7 +21,7 @@ function Login() {
 
         try {
                                                                                                        //SEND COOKIES
-            const { data } = await axios.post("https://prodigy-fs-01-server.vercel.app/login", { email, password }, {withCredentials: true})
+            const { data } = await axios.post("https://prodigy-fs-01-api.vercel.app/login", { email, password }, {withCredentials: true})
 
             if (data.error) {
                 toast.error(data.error)

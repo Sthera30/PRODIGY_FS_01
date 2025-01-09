@@ -20,7 +20,7 @@ function Register() {
 
         try {
 
-            const { data } = await axios.post(`https://prodigy-fs-01-server.vercel.app/register`, { name, email, password, confirmPassword }, {withCredentials: true})
+            const { data } = await axios.post(`https://prodigy-fs-01-api.vercel.app/register`, { name, email, password, confirmPassword }, {withCredentials: true})
 
             if (data.success) {
                 toast.success(data.message)

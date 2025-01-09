@@ -23,7 +23,7 @@ function VerifyOtp() {
 
         try {
 
-            const { data } = await axios.put(`https://prodigy-fs-01-server.vercel.app/verifyOtp`, { otp, email })
+            const { data } = await axios.put(`https://prodigy-fs-01-api.vercel.app/verifyOtp`, { otp, email })
 
             if (data.success) {
                 toast.success(data.message)
